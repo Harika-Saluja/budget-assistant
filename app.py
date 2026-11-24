@@ -25,7 +25,7 @@ def _load_secrets_into_env():
 
 _load_secrets_into_env()
 
-from core import (DEFAULT_BUDGETS, DESIGN_PROFILE, MEMORY_KINDS, QUICK_QUESTIONS, SPINE_MAP, TASK_SPEC, WELCOME,
+from core import (DEFAULT_BUDGETS, MEMORY_KINDS, QUICK_QUESTIONS, WELCOME,
                   MemoryStore, answer, classify_memory_text, compute_alerts, effective_transactions, is_stale,
                   llm_mode, make_transactions, new_memory, outcome_note, parse_budget_command, parse_remember,
                   parse_transactions_csv, propose_inferences, suggest_categories, transactions_to_csv)
@@ -284,20 +284,6 @@ def alerts_tab():
     st.table({"Sensitivity %": levels, "Alerts": [len(compute_alerts(tx_now(), ss.budgets, s)) for s in levels]})
 
 
-# ----------------------------------------------------------------------------- design notes tab (L1, L2, L9)
-def design_tab():
-    st.subheader("Design notes")
-    st.caption("How this prototype maps to the module's ideas.")
-    st.markdown("**Four variables (Lecture 1)**")
-    st.table(DESIGN_PROFILE)
-    st.markdown("**The spine of layers (Lecture 2)**")
-    st.table(SPINE_MAP)
-    with st.expander("Task specification sent to the model (Lecture 9)"):
-        for name, text in TASK_SPEC.items():
-            st.markdown(f"**{name}**")
-            st.text(text)
-
-
 # ----------------------------------------------------------------------------- layout
 left, right = st.columns([3, 2], gap="large")
 
@@ -320,27 +306,15 @@ with left:
         st.rerun()
 
 with right:
-    tab_mem, tab_alerts, tab_design = st.tabs(["Memory", "Alerts", "Design notes"])
+    tab_mem, tab_alerts = st.tabs(["Memory", "Alerts"])
     with tab_mem:
         memory_tab()
     with tab_alerts:
         alerts_tab()
-    with tab_design:
-        design_tab()
 
 with st.sidebar:
     st.header("Under the hood")
     st.write(f"Mode: **{llm_mode()}**")
-    with st.expander("Key check (no key values shown)"):
-        st.caption("App version: v2.1")
-        try:
-            secret_names = [str(k) for k in st.secrets.keys()]
-        except Exception as exc:
-            secret_names = []
-            st.caption(f"Could not read secrets: {type(exc).__name__}")
-        st.caption(f"Secret names the app can see: {secret_names or 'none'}")
-        st.caption(f"OPENAI_API_KEY in environment: {bool(os.getenv('OPENAI_API_KEY'))}")
-        st.caption(f"ANTHROPIC_API_KEY in environment: {bool(os.getenv('ANTHROPIC_API_KEY'))}")
     res = ss.last_result
     st.caption("The seven stages of the last model call (Lecture 9):")
     if res and res["stages"]:
