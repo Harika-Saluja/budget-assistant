@@ -3,9 +3,27 @@
 Run with:  streamlit run app.py
 All data is synthetic unless you upload your own CSV. Not financial advice.
 """
+import os
 from datetime import date
 
 import streamlit as st
+
+
+def _load_secrets_into_env():
+    """Streamlit Cloud keeps keys in st.secrets. Copy the ones we use into the environment, where core.py reads them.
+    Nothing is written to disk and no key is stored in the repo."""
+    for name in ("OPENAI_API_KEY", "ANTHROPIC_API_KEY", "BUDGET_MODEL"):
+        if os.getenv(name):
+            continue
+        try:
+            value = st.secrets.get(name)
+        except Exception:        # no secrets file, e.g. when running locally
+            value = None
+        if value:
+            os.environ[name] = str(value).strip()
+
+
+_load_secrets_into_env()
 
 from core import (DEFAULT_BUDGETS, DESIGN_PROFILE, MEMORY_KINDS, QUICK_QUESTIONS, SPINE_MAP, TASK_SPEC, WELCOME,
                   MemoryStore, answer, classify_memory_text, compute_alerts, effective_transactions, is_stale,
