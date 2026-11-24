@@ -331,6 +331,16 @@ with right:
 with st.sidebar:
     st.header("Under the hood")
     st.write(f"Mode: **{llm_mode()}**")
+    with st.expander("Key check (no key values shown)"):
+        st.caption("App version: v2.1")
+        try:
+            secret_names = [str(k) for k in st.secrets.keys()]
+        except Exception as exc:
+            secret_names = []
+            st.caption(f"Could not read secrets: {type(exc).__name__}")
+        st.caption(f"Secret names the app can see: {secret_names or 'none'}")
+        st.caption(f"OPENAI_API_KEY in environment: {bool(os.getenv('OPENAI_API_KEY'))}")
+        st.caption(f"ANTHROPIC_API_KEY in environment: {bool(os.getenv('ANTHROPIC_API_KEY'))}")
     res = ss.last_result
     st.caption("The seven stages of the last model call (Lecture 9):")
     if res and res["stages"]:
