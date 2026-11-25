@@ -107,6 +107,5 @@ How I checked the results: unit tests, manual walkthroughs with screenshots, com
 
 ## Additional files
 
-- `recordings/live_responses.json`: recorded replies, if present.
 - `sample_transactions.csv`: download from the app sidebar.
 - Report PDF: submitted separately on Canvas.
