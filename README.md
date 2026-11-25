@@ -1,12 +1,11 @@
 # Budget assistant: a memory you can inspect, correct and forget
 
-README prose word count: **about 1330** (code and commands not counted)
+README prose word count: **about 1000** (code and commands not counted)
 
 Coursework prototype for *Intelligent Interactive Systems* (University of Birmingham). A chat assistant answers questions about **synthetic** spending data and remembers things about the user. Its memory sits in a panel beside the chat, where each note can be confirmed, edited or forgotten. It is not financial advice and never moves money.
 
 - Repository: https://github.com/Harika-Saluja/budget-assistant
-- Live app: [PASTE STREAMLIT APP LINK]
-- Submitted commit: [PASTE COMMIT HASH]
+- Live app: https://budget-assistant-ctfetuna7mddsdbzw7b3gt.streamlit.app/
 
 ## Project status
 
