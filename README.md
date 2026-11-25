@@ -96,11 +96,11 @@ Screenshots of each test are in the report.
 
 ## AI assistance
 
-I used three AI tools.
+I used three AI tools that helped me design and write the prototype code (memory, retrieval, checks, validation, Streamlit interface), a unit-test suite, the demonstration steps, the report and this README. I ran the tests and the app myself, read and changed suggestions (for example removing the design tab and rewording captions), and corrected claims that did not match my screenshots.
 
-- **Claude:** helped design and write the prototype code (memory, retrieval, checks, validation, Streamlit interface), a unit-test suite, the demonstration steps, the report and this README. I ran the tests and the app myself, read and changed suggestions (for example removing the design tab and rewording captions), and corrected claims that did not match my screenshots.
-- **ChatGPT:** [EDIT: say what you used it for, e.g. explaining concepts, debugging, rewording].
-- **GitHub Copilot:** [EDIT: say what you used it for, e.g. code completion and small fixes].
+- **Claude:**
+- **ChatGPT:** 
+- **GitHub Copilot:** 
 - **OpenAI API (inside the prototype):** the model that writes reply text. It is part of the system, not an assistant used to produce this work.
 
 How I checked the results: unit tests, manual walkthroughs with screenshots, comparing reply figures against the transaction rows, and reading AI-written text against what the app actually did. AI text that overstated results was corrected. Example: a draft claimed live-model operation, but every call returned HTTP 429, so the report says it was not evaluated.
