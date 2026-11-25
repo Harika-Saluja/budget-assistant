@@ -63,8 +63,6 @@ Transactions come from `make_transactions()` (seeded, so reproducible) and inclu
 
 ## Development record
 
-Commit links: [PASTE LINKS FOR THE MAIN COMMITS]
-
 - **Stage 1, core and memory.** Seeded synthetic data, a memory store with four kinds of note, stated vs guessed labels, consent, 30-day expiry, and context assembly capped at four notes. Why: the research question is about visible, correctable memory. Checked: unit tests.
 - **Stage 2, grounding and boundaries.** Evidence rows, reply checks, refusal of out-of-scope questions in code, and a validated budget-change path with confirm, cancel and undo. Why: keep suggestions separate from actions. Checked: unit tests and manual scenarios.
 - **Stage 3, interface.** Memory panel, alerts with a sensitivity slider and one-off marking, quick-question buttons, and a seven-stage panel. Why: make each mechanism inspectable. Checked: walkthroughs T1 to T7.
